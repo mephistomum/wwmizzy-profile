@@ -1,0 +1,1097 @@
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    width: 100%;
+    min-height: 100%;
+    overflow-x: hidden;
+
+    background: #ffffff;
+    color: #111111;
+
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+img {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.header {
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 80px;
+
+    z-index: 1000;
+
+    background: transparent;
+    color: #ffffff;
+
+    transition:
+        background-color 0.35s ease,
+        color 0.35s ease,
+        box-shadow 0.35s ease;
+}
+
+
+/* Header after scrolling */
+
+.header.scrolled {
+    background: #ffffff;
+    color: #111111;
+
+    box-shadow:
+        0 2px 15px rgba(0, 0, 0, 0.06);
+}
+
+
+/* =========================================================
+   HEADER INNER
+========================================================= */
+
+.header-inner {
+    width: min(1220px, calc(100% - 60px));
+
+    height: 100%;
+
+    margin: 0 auto;
+
+    display: flex;
+    align-items: center;
+}
+
+
+/* =========================================================
+   LOGO
+========================================================= */
+
+.logo {
+    flex-shrink: 0;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: 34px;
+    font-weight: 700;
+
+    line-height: 1;
+
+    transition: color 0.35s ease;
+}
+
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+.navigation {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 31px;
+
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.navigation a {
+    position: relative;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+
+    white-space: nowrap;
+
+    transition:
+        color 0.35s ease,
+        opacity 0.25s ease;
+}
+
+.navigation a:hover {
+    opacity: 0.55;
+}
+
+
+/* Active navigation item */
+
+.navigation a.active::after {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    right: 0;
+
+    bottom: -8px;
+
+    height: 1px;
+
+    background: currentColor;
+}
+
+
+/* =========================================================
+   SOCIAL ICONS
+========================================================= */
+
+.social-links {
+    display: flex;
+    align-items: center;
+
+    gap: 14px;
+
+    flex-shrink: 0;
+}
+
+.social-links a {
+    width: 16px;
+    height: 16px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition:
+        color 0.35s ease,
+        opacity 0.25s ease,
+        transform 0.25s ease;
+}
+
+.social-links a:hover {
+    opacity: 0.55;
+
+    transform:
+        translateY(-1px);
+}
+
+.social-links svg {
+    display: block;
+
+    width: 14px;
+    height: 14px;
+
+    fill: currentColor;
+}
+
+
+/* =========================================================
+   MOBILE MENU
+========================================================= */
+
+.menu-toggle {
+    display: none;
+}
+
+.menu-button {
+    display: none;
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero {
+    position: relative;
+
+    width: 100%;
+    height: 100svh;
+
+    min-height: 600px;
+
+    overflow: hidden;
+
+    background-image:
+        url("../image/IMG_0554.PNG");
+
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+
+    color: #ffffff;
+}
+
+
+/* =========================================================
+   HERO OVERLAY
+========================================================= */
+
+.hero-overlay {
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        rgba(20, 25, 25, 0.32);
+
+    z-index: 1;
+}
+
+
+/* =========================================================
+   HERO CONTENT
+========================================================= */
+
+.hero-content {
+    position: absolute;
+
+    z-index: 5;
+
+    top: 60%;
+    left: 50%;
+
+    width: min(900px, calc(100% - 40px));
+
+    transform:
+        translate(-50%, -50%);
+
+    text-align: center;
+}
+
+.hero-content h1 {
+    margin-bottom: 17px;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size:
+        clamp(48px, 4.5vw, 64px);
+
+    font-weight: 400;
+
+    line-height: 1.1;
+
+    letter-spacing: -1.5px;
+}
+
+.hero-content p {
+    margin-bottom: 29px;
+
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.hero-button {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    min-width: 108px;
+    height: 43px;
+
+    padding: 0 22px;
+
+    border-radius: 24px;
+
+    background: #82c5d5;
+    color: #ffffff;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    transition:
+        background 0.25s ease,
+        transform 0.25s ease;
+}
+
+.hero-button:hover {
+    background: #70b8ca;
+
+    transform:
+        translateY(-2px);
+}
+
+
+/* =========================================================
+   SLIDER ARROWS
+========================================================= */
+
+.slider-arrow {
+    position: absolute;
+
+    z-index: 5;
+
+    top: 50%;
+
+    width: 45px;
+    height: 70px;
+
+    transform:
+        translateY(-50%);
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    opacity: 0.95;
+
+    transition:
+        opacity 0.25s ease;
+}
+
+.slider-arrow:hover {
+    opacity: 0.6;
+}
+
+.slider-arrow span {
+    display: block;
+
+    width: 18px;
+    height: 18px;
+
+    border-top: 2px solid #ffffff;
+    border-left: 2px solid #ffffff;
+}
+
+.slider-prev {
+    left: 3px;
+}
+
+.slider-prev span {
+    transform:
+        rotate(-45deg);
+}
+
+.slider-next {
+    right: 3px;
+}
+
+.slider-next span {
+    transform:
+        rotate(135deg);
+}
+
+
+/* =========================================================
+   SECOND SECTION
+========================================================= */
+
+.about-section {
+    position: relative;
+
+    width: 100%;
+
+    padding:
+        80px
+        0
+        120px;
+
+    background: #ffffff;
+}
+
+
+/* =========================================================
+   INTRODUCTION
+========================================================= */
+
+.about-intro {
+    width: min(1000px, calc(100% - 40px));
+
+    margin: 0 auto;
+
+    text-align: center;
+}
+
+
+/* Large heading */
+
+.about-intro h2 {
+    margin-bottom: 38px;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size:
+        clamp(38px, 3.3vw, 50px);
+
+    font-weight: 400;
+
+    line-height: 1.1;
+
+    letter-spacing: -1.2px;
+
+    color: #111111;
+}
+
+
+/* Description */
+
+.about-intro p {
+    max-width: 850px;
+
+    margin: 0 auto;
+
+    font-size: 15px;
+
+    line-height: 1.65;
+
+    color: #8a8a8a;
+}
+
+
+/* =========================================================
+   MASONRY PHOTO GRID
+========================================================= */
+
+/*
+   IMPORTANT:
+
+   We use CSS columns instead of CSS Grid.
+
+   This allows each image to have its own height and
+   prevents the large empty spaces created by normal grid rows.
+*/
+
+.photo-grid {
+    width: min(1200px, calc(100% - 40px));
+
+    margin: 100px auto 0;
+
+    column-count: 4;
+    column-gap: 27px;
+}
+
+
+/* =========================================================
+   PHOTO ITEM
+========================================================= */
+
+.photo-item {
+    width: 100%;
+
+    display: inline-block;
+
+    margin:
+        0 0 50px;
+
+    text-align: center;
+
+    /*
+       Prevent an individual photo/item from being
+       split between columns.
+    */
+    break-inside: avoid;
+    page-break-inside: avoid;
+}
+
+
+/* =========================================================
+   PHOTO IMAGE
+========================================================= */
+
+.photo-item a {
+    display: block;
+
+    overflow: hidden;
+
+    margin-bottom: 18px;
+}
+
+.photo-item img {
+    display: block;
+
+    width: 100%;
+    height: auto;
+
+    transition:
+        transform 0.5s ease;
+}
+
+
+/* Image hover effect */
+
+.photo-item a:hover img {
+    transform:
+        scale(1.035);
+}
+
+
+/* =========================================================
+   PHOTO TITLE
+========================================================= */
+
+.photo-item h3 {
+    margin-bottom: 8px;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: 20px;
+    font-weight: 400;
+
+    line-height: 1.2;
+
+    color: #111111;
+}
+
+
+/* =========================================================
+   PHOTO CATEGORY
+========================================================= */
+
+.photo-item span {
+    font-size: 11px;
+
+    letter-spacing: 0.5px;
+
+    color: #888888;
+}
+
+
+/* =========================================================
+   REMOVE OLD GRID POSITIONING
+========================================================= */
+
+/*
+   Do NOT add nth-child margins here.
+
+   The CSS columns automatically arrange the images
+   vertically and eliminate the large empty spaces.
+*/
+
+
+/* =========================================================
+   OTHER SECTIONS
+========================================================= */
+
+.dummy-section {
+    width: 100%;
+
+    min-height: 500px;
+
+    background: #ffffff;
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1000px) {
+
+    /* -----------------------------------------
+       HEADER
+    ----------------------------------------- */
+
+    .header-inner {
+        width:
+            calc(100% - 40px);
+    }
+
+    .navigation {
+        gap: 18px;
+    }
+
+    .navigation a {
+        font-size: 11px;
+    }
+
+    .logo {
+        font-size: 30px;
+    }
+
+
+    /* -----------------------------------------
+       MASONRY
+    ----------------------------------------- */
+
+    .photo-grid {
+        column-count: 2;
+
+        column-gap: 25px;
+
+        width:
+            calc(100% - 40px);
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 760px) {
+
+    /* -----------------------------------------
+       HEADER
+    ----------------------------------------- */
+
+    .header {
+        height: 70px;
+    }
+
+    .header-inner {
+        width:
+            calc(100% - 32px);
+
+        justify-content:
+            space-between;
+    }
+
+
+    /* -----------------------------------------
+       LOGO
+    ----------------------------------------- */
+
+    .logo {
+        font-size: 29px;
+    }
+
+
+    /* -----------------------------------------
+       MOBILE NAVIGATION
+    ----------------------------------------- */
+
+    .navigation {
+        position: absolute;
+
+        top: 70px;
+
+        left: 16px;
+        right: 16px;
+
+        margin: 0;
+
+        padding: 25px;
+
+        display: flex;
+
+        flex-direction: column;
+
+        align-items: center;
+
+        gap: 22px;
+
+        background:
+            rgba(255, 255, 255, 0.97);
+
+        color: #111111;
+
+        border-radius: 3px;
+
+        box-shadow:
+            0 10px 30px
+            rgba(0, 0, 0, 0.1);
+
+        opacity: 0;
+
+        visibility: hidden;
+
+        transform:
+            translateY(-10px);
+
+        transition:
+            opacity 0.25s ease,
+            transform 0.25s ease,
+            visibility 0.25s ease;
+    }
+
+
+    /* Dark mobile menu while at hero */
+
+    .header:not(.scrolled) .navigation {
+        background:
+            rgba(25, 29, 29, 0.95);
+
+        color: #ffffff;
+    }
+
+
+    .navigation a {
+        font-size: 13px;
+    }
+
+
+    /* Show menu */
+
+    .menu-toggle:checked ~ .navigation {
+        opacity: 1;
+
+        visibility: visible;
+
+        transform:
+            translateY(0);
+    }
+
+
+    /* -----------------------------------------
+       HAMBURGER
+    ----------------------------------------- */
+
+    .menu-button {
+        display: flex;
+
+        width: 36px;
+        height: 36px;
+
+        flex-direction: column;
+
+        justify-content: center;
+        align-items: center;
+
+        gap: 5px;
+
+        cursor: pointer;
+    }
+
+    .menu-button span {
+        display: block;
+
+        width: 22px;
+        height: 1.5px;
+
+        background: currentColor;
+
+        transition:
+            transform 0.25s ease,
+            opacity 0.25s ease;
+    }
+
+
+    /* Hamburger → X */
+
+    .menu-toggle:checked +
+    .menu-button
+    span:nth-child(1) {
+
+        transform:
+            translateY(6.5px)
+            rotate(45deg);
+    }
+
+    .menu-toggle:checked +
+    .menu-button
+    span:nth-child(2) {
+
+        opacity: 0;
+    }
+
+    .menu-toggle:checked +
+    .menu-button
+    span:nth-child(3) {
+
+        transform:
+            translateY(-6.5px)
+            rotate(-45deg);
+    }
+
+
+    /* -----------------------------------------
+       SOCIAL ICONS
+    ----------------------------------------- */
+
+    .social-links {
+        display: none;
+    }
+
+
+    /* -----------------------------------------
+       HERO
+    ----------------------------------------- */
+
+    .hero {
+        min-height: 100svh;
+
+        background-position:
+            54% center;
+    }
+
+    .hero-content {
+        width:
+            calc(100% - 45px);
+    }
+
+    .hero-content h1 {
+        font-size:
+            clamp(40px, 11vw, 54px);
+
+        letter-spacing: -1px;
+    }
+
+    .hero-content p {
+        max-width: 330px;
+
+        margin:
+            0 auto 25px;
+
+        font-size: 13px;
+    }
+
+
+    /* -----------------------------------------
+       SLIDER ARROWS
+    ----------------------------------------- */
+
+    .slider-arrow {
+        width: 35px;
+    }
+
+    .slider-arrow span {
+        width: 14px;
+        height: 14px;
+    }
+
+
+    /* -----------------------------------------
+       SECOND SECTION
+    ----------------------------------------- */
+
+    .about-section {
+        padding:
+            70px
+            0
+            80px;
+    }
+
+
+    /* -----------------------------------------
+       INTRO
+    ----------------------------------------- */
+
+    .about-intro {
+        width:
+            calc(100% - 35px);
+    }
+
+    .about-intro h2 {
+        font-size:
+            clamp(32px, 9vw, 44px);
+
+        line-height: 1.12;
+
+        letter-spacing: -0.7px;
+
+        margin-bottom: 28px;
+    }
+
+
+    /*
+       Allows the heading to naturally wrap on phones.
+    */
+
+    .desktop-break {
+        display: none;
+    }
+
+    .about-intro p {
+        font-size: 14px;
+
+        line-height: 1.65;
+    }
+
+
+    /* -----------------------------------------
+       MASONRY → ONE COLUMN
+    ----------------------------------------- */
+
+    .photo-grid {
+        width:
+            calc(100% - 35px);
+
+        margin-top: 65px;
+
+        column-count: 1;
+
+        column-gap: 0;
+    }
+
+
+    .photo-item {
+        margin-bottom: 55px;
+    }
+
+
+    .photo-item h3 {
+        font-size: 21px;
+    }
+
+    .photo-item span {
+        font-size: 10px;
+    }
+}
+
+
+/* =========================================================
+   SMALL PHONES
+========================================================= */
+
+@media (max-width: 400px) {
+
+    /* -----------------------------------------
+       SECOND SECTION
+    ----------------------------------------- */
+
+    .about-section {
+        padding-top: 60px;
+    }
+
+
+    /* -----------------------------------------
+       INTRO
+    ----------------------------------------- */
+
+    .about-intro h2 {
+        font-size: 32px;
+    }
+
+    .about-intro p {
+        font-size: 13px;
+    }
+
+
+    /* -----------------------------------------
+       PHOTO GRID
+    ----------------------------------------- */
+
+    .photo-grid {
+        width:
+            calc(100% - 28px);
+    }
+}
+
+/* =========================================================
+   STATIC WEBSITE BACKGROUND
+========================================================= */
+
+.site-background {
+    position: fixed;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100vh;
+
+    z-index: -10;
+
+    background-image:
+        url("../image/quote2.PNG");
+
+    background-size: cover;
+
+    background-position: center center;
+
+    background-repeat: no-repeat;
+}
+
+/* =========================================================
+   QUOTE SECTION
+========================================================= */
+
+.quote-section {
+    position: relative;
+
+    width: 100%;
+
+    min-height: 355px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    /*
+       IMPORTANT:
+       No background here.
+    */
+
+    background: transparent;
+
+    color: #ffffff;
+}
+
+
+/* =========================================================
+   QUOTE CONTENT
+========================================================= */
+
+.quote-content {
+    width: min(900px, calc(100% - 50px));
+
+    margin: 0 auto;
+
+    text-align: center;
+
+    background: transparent;
+}
+
+
+/* =========================================================
+   QUOTE
+========================================================= */
+
+.quote-content blockquote {
+    margin: 0 auto 35px;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size:
+        clamp(24px, 2.2vw, 31px);
+
+    font-style: italic;
+
+    font-weight: 600;
+
+    line-height: 1.45;
+
+    color: #ffffff;
+}
+
+
+/* =========================================================
+   AUTHOR
+========================================================= */
+
+.quote-author {
+    margin: 0;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.2px;
+
+    color: #ffffff;
+}
