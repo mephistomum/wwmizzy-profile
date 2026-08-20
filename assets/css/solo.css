@@ -1,0 +1,132 @@
+/* =========================================
+   SOLO SHOT GALLERY
+========================================= */
+
+.solo-gallery-section {
+    padding: 120px 6vw;
+    background: #fff;
+}
+
+.solo-gallery-intro {
+    max-width: 700px;
+    margin: 0 auto 70px;
+    text-align: center;
+}
+
+.solo-gallery-intro span {
+    display: block;
+    margin-bottom: 15px;
+
+    font-size: 11px;
+    letter-spacing: 4px;
+    font-weight: 500;
+    color: #888;
+}
+
+.solo-gallery-intro h2 {
+    margin: 0 0 20px;
+
+    font-size: clamp(36px, 5vw, 64px);
+    font-weight: 400;
+    letter-spacing: -1px;
+}
+
+.solo-gallery-intro p {
+    margin: 0;
+
+    font-size: 15px;
+    line-height: 1.8;
+    color: #777;
+}
+
+
+/* =========================================
+   PINTEREST MASONRY
+========================================= */
+
+.solo-gallery {
+    column-count: 4;
+    column-gap: 20px;
+
+    max-width: 1500px;
+    margin: 0 auto;
+}
+
+.solo-photo {
+    display: block;
+
+    margin-bottom: 20px;
+
+    break-inside: avoid;
+    -webkit-column-break-inside: avoid;
+
+    overflow: hidden;
+}
+
+.solo-photo img {
+    display: block;
+
+    width: 100%;
+    height: auto;
+
+    transition:
+        transform 0.6s ease,
+        opacity 0.6s ease;
+}
+
+.solo-photo:hover img {
+    transform: scale(1.04);
+    opacity: 0.9;
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 1100px) {
+
+    .solo-gallery {
+        column-count: 3;
+    }
+
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 700px) {
+
+    .solo-gallery-section {
+        padding: 80px 20px;
+    }
+
+    .solo-gallery-intro {
+        margin-bottom: 45px;
+    }
+
+    .solo-gallery {
+        column-count: 2;
+        column-gap: 12px;
+    }
+
+    .solo-photo {
+        margin-bottom: 12px;
+    }
+
+}
+
+
+/* =========================================
+   SMALL MOBILE
+========================================= */
+
+@media (max-width: 450px) {
+
+    .solo-gallery {
+        column-count: 1;
+    }
+
+}
