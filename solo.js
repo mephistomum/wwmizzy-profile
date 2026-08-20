@@ -5,7 +5,18 @@
 document.addEventListener("DOMContentLoaded", async () => {
 
     const soloGallery = document.getElementById("soloGallery");
+
     const loader = document.getElementById("page-loader");
+
+    const percentageText =
+        document.getElementById("loaderPercentage");
+
+    const progressBar =
+        document.getElementById("loaderProgressBar");
+
+    const loaderText =
+        document.getElementById("loaderText");
+
 
     try {
 
@@ -27,17 +38,21 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 
         /* =========================================
-           LOAD PHOTO LIST
+           LOAD JSON
         ========================================== */
+
+        loaderText.textContent = "Loading photo list...";
 
         const response = await fetch(
             "assets/image/solo/solo.json"
         );
 
         if (!response.ok) {
+
             throw new Error(
                 `Unable to load solo.json (${response.status})`
             );
+
         }
 
         const images = await response.json();
@@ -48,50 +63,96 @@ document.addEventListener("DOMContentLoaded", async () => {
         ========================================== */
 
         if (!Array.isArray(images)) {
+
             throw new Error(
-                "solo.json must contain an array of image filenames."
+                "solo.json must contain an array."
             );
+
         }
 
-        console.log("Solo photos found:", images);
+
+        const totalImages = images.length;
+
+        let loadedImages = 0;
 
 
         /* =========================================
-           PRELOAD ALL IMAGES
+           UPDATE PROGRESS
         ========================================== */
 
-        const imagePromises = images.map((image, index) => {
+        function updateProgress() {
 
-            return new Promise((resolve, reject) => {
+            const percentage = Math.round(
+                (loadedImages / totalImages) * 100
+            );
 
-                const img = new Image();
 
-                img.onload = () => {
+            percentageText.textContent =
+                `${percentage}%`;
 
-                    console.log(
-                        `Loaded ${index + 1}/${images.length}:`,
-                        image
-                    );
 
-                    resolve();
+            progressBar.style.width =
+                `${percentage}%`;
 
-                };
 
-                img.onerror = () => {
+            loaderText.textContent =
+                `Loading memories... ${loadedImages} / ${totalImages}`;
 
-                    reject(
-                        new Error(
-                            `Unable to load image: ${image}`
-                        )
-                    );
+        }
 
-                };
 
-                img.src = `assets/image/solo/${image}`;
+        // Start at 0%
+        updateProgress();
 
-            });
 
-        });
+        /* =========================================
+           PRELOAD IMAGES
+        ========================================== */
+
+        const imagePromises = images.map(
+            (image, index) => {
+
+                return new Promise(
+                    (resolve, reject) => {
+
+                        const img = new Image();
+
+
+                        img.onload = () => {
+
+                            loadedImages++;
+
+                            updateProgress();
+
+                            console.log(
+                                `Loaded ${loadedImages}/${totalImages}:`,
+                                image
+                            );
+
+                            resolve();
+
+                        };
+
+
+                        img.onerror = () => {
+
+                            reject(
+                                new Error(
+                                    `Unable to load image: ${image}`
+                                )
+                            );
+
+                        };
+
+
+                        img.src =
+                            `assets/image/solo/${image}`;
+
+                    }
+                );
+
+            }
+        );
 
 
         /* =========================================
@@ -101,7 +162,21 @@ document.addEventListener("DOMContentLoaded", async () => {
         await Promise.all(imagePromises);
 
 
-        console.log("All solo photos loaded.");
+        /* =========================================
+           COMPLETE
+        ========================================== */
+
+        percentageText.textContent = "100%";
+
+        progressBar.style.width = "100%";
+
+        loaderText.textContent =
+            "Ready";
+
+
+        console.log(
+            "All solo photos loaded."
+        );
 
 
         /* =========================================
@@ -110,24 +185,30 @@ document.addEventListener("DOMContentLoaded", async () => {
 
         images.forEach((image, index) => {
 
-            const link = document.createElement("a");
+            const link =
+                document.createElement("a");
 
-            link.href = `assets/image/solo/${image}`;
+            link.href =
+                `assets/image/solo/${image}`;
 
-            link.className = "solo-photo";
+            link.className =
+                "solo-photo";
 
-            link.target = "_blank";
+            link.target =
+                "_blank";
 
 
-            const img = document.createElement("img");
+            const img =
+                document.createElement("img");
 
-            img.src = `assets/image/solo/${image}`;
+            img.src =
+                `assets/image/solo/${image}`;
 
-            img.alt = `Solo portrait ${index + 1}`;
+            img.alt =
+                `Solo portrait ${index + 1}`;
 
-            // Don't lazy-load here because we already
-            // intentionally loaded everything.
-            img.loading = "eager";
+            img.loading =
+                "eager";
 
 
             link.appendChild(img);
@@ -145,7 +226,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
             loader.classList.add("hidden");
 
-        }, 300);
+        }, 500);
 
 
     } catch (error) {
@@ -160,6 +241,22 @@ document.addEventListener("DOMContentLoaded", async () => {
            SHOW ERROR
         ========================================== */
 
+        if (loaderText) {
+
+            loaderText.textContent =
+                "Unable to load gallery.";
+
+        }
+
+
+        if (percentageText) {
+
+            percentageText.textContent =
+                "Error";
+
+        }
+
+
         if (soloGallery) {
 
             soloGallery.innerHTML = `
@@ -172,7 +269,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 
         /* =========================================
-           STILL HIDE LOADER
+           HIDE LOADER
         ========================================== */
 
         if (loader) {
@@ -181,7 +278,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                 loader.classList.add("hidden");
 
-            }, 300);
+            }, 1000);
 
         }
 
