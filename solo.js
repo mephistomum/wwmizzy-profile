@@ -109,50 +109,78 @@ document.addEventListener("DOMContentLoaded", async () => {
            PRELOAD IMAGES
         ========================================== */
 
+        // const imagePromises = images.map(
+        //     (image, index) => {
+
+        //         return new Promise(
+        //             (resolve, reject) => {
+
+        //                 const img = new Image();
+
+
+        //                 img.onload = () => {
+
+        //                     loadedImages++;
+
+        //                     updateProgress();
+
+        //                     console.log(
+        //                         `Loaded ${loadedImages}/${totalImages}:`,
+        //                         image
+        //                     );
+
+        //                     resolve();
+
+        //                 };
+
+
+        //                 img.onerror = () => {
+
+        //                     reject(
+        //                         new Error(
+        //                             `Unable to load image: ${image}`
+        //                         )
+        //                     );
+
+        //                 };
+
+
+        //                 img.src =
+        //                     `assets/image/solo/${image}`;
+
+        //             }
+        //         );
+
+        //     }
+        // );
+
         const imagePromises = images.map(
-            (image, index) => {
+    (imageObj, index) => {
+        return new Promise((resolve, reject) => {
+            const img = new Image();
 
-                return new Promise(
-                    (resolve, reject) => {
-
-                        const img = new Image();
-
-
-                        img.onload = () => {
-
-                            loadedImages++;
-
-                            updateProgress();
-
-                            console.log(
-                                `Loaded ${loadedImages}/${totalImages}:`,
-                                image
-                            );
-
-                            resolve();
-
-                        };
-
-
-                        img.onerror = () => {
-
-                            reject(
-                                new Error(
-                                    `Unable to load image: ${image}`
-                                )
-                            );
-
-                        };
-
-
-                        img.src =
-                            `assets/image/solo/${image}`;
-
-                    }
+            img.onload = () => {
+                loadedImages++;
+                updateProgress();
+                console.log(
+                    `Loaded ${loadedImages}/${totalImages}:`,
+                    imageObj.file
                 );
+                resolve();
+            };
 
-            }
-        );
+            img.onerror = () => {
+                reject(
+                    new Error(
+                        `Unable to load image: ${imageObj.file}`
+                    )
+                );
+            };
+
+            img.src = `assets/image/solo/${imageObj.file}`;
+        });
+    }
+);
 
 
         /* =========================================
@@ -183,39 +211,113 @@ document.addEventListener("DOMContentLoaded", async () => {
            CREATE GALLERY
         ========================================== */
 
-        images.forEach((image, index) => {
+        // images.forEach((image, index) => {
 
-            const link =
-                document.createElement("a");
+        //     const link =
+        //         document.createElement("a");
 
-            link.href =
-                `assets/image/solo/${image}`;
+        //     link.href =
+        //         `assets/image/solo/${image}`;
 
-            link.className =
-                "solo-photo";
+        //     link.className =
+        //         "solo-photo";
 
-            link.target =
-                "_blank";
-
-
-            const img =
-                document.createElement("img");
-
-            img.src =
-                `assets/image/solo/${image}`;
-
-            img.alt =
-                `Solo portrait ${index + 1}`;
-
-            img.loading =
-                "eager";
+        //     link.target =
+        //         "_blank";
 
 
-            link.appendChild(img);
+        //     const img =
+        //         document.createElement("img");
 
-            soloGallery.appendChild(link);
+        //     img.src =
+        //         `assets/image/solo/${image}`;
 
-        });
+        //     img.alt =
+        //         `Solo portrait ${index + 1}`;
+
+        //     img.loading =
+        //         "eager";
+
+
+        //     link.appendChild(img);
+
+        //     soloGallery.appendChild(link);
+
+        // });
+
+
+
+// images.forEach((imageObj, index) => {
+//     const wrapper = document.createElement("div");
+//     wrapper.className = "solo-photo-item";
+
+//     const link = document.createElement("a");
+//     link.href = `assets/image/solo/${imageObj.file}`;
+//     link.className = "solo-photo";
+//     link.target = "_blank";
+
+//     const img = document.createElement("img");
+//     img.src = `assets/image/solo/${imageObj.file}`;
+//     img.alt = `Solo portrait ${index + 1}`;
+//     img.loading = "eager";
+
+//     link.appendChild(img);
+//     wrapper.appendChild(link);
+
+//     // Copy button with icon
+//     const copyBtn = document.createElement("button");
+//     copyBtn.className = "copy-btn";
+//     copyBtn.setAttribute("data-code", imageObj.code);
+
+//     const icon = document.createElement("img");
+//     icon.src = "assets/image/code.png";   // path to your icon
+//     icon.alt = "Copy Code";
+//     icon.className = "copy-icon";
+
+//     copyBtn.appendChild(icon);
+//     wrapper.appendChild(copyBtn);
+
+//     soloGallery.appendChild(wrapper);
+// });
+
+images.forEach((imageObj, index) => {
+    const wrapper = document.createElement("div");
+    wrapper.className = "solo-photo-item";
+
+    const link = document.createElement("a");
+    link.href = `assets/image/solo/${imageObj.file}`;
+    link.className = "solo-photo";
+    link.target = "_blank";
+
+    const img = document.createElement("img");
+    img.src = `assets/image/solo/${imageObj.file}`;
+    img.alt = `Solo portrait ${index + 1}`;
+    img.loading = "eager";
+
+    link.appendChild(img);
+    wrapper.appendChild(link);
+
+    // Copy button with text overlay
+    const copyBtn = document.createElement("button");
+    copyBtn.className = "copy-btn";
+    copyBtn.textContent = "Copy Pose";
+    copyBtn.setAttribute("data-code", imageObj.code);
+
+    wrapper.appendChild(copyBtn);
+    soloGallery.appendChild(wrapper);
+});
+
+
+// Enable "hover" effect on touch devices by tapping
+soloGallery.addEventListener("click", function(e) {
+    const photoItem = e.target.closest(".solo-photo-item");
+    if (photoItem) {
+        // Toggle a class that simulates hover
+        photoItem.classList.toggle("touch-active");
+        e.preventDefault(); // prevent immediate link navigation on first tap
+    }
+});
+
 
 
         /* =========================================
@@ -284,4 +386,13 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     }
 
+});
+
+document.addEventListener("click", function(e) {
+    if (e.target.classList.contains("copy-btn")) {
+        const code = e.target.getAttribute("data-code");
+        navigator.clipboard.writeText(code).then(() => {
+            alert("Code copied: " + code);
+        });
+    }
 });
