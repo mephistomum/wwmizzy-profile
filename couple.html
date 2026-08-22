@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Izzy Photography</title>
+
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/couple.css">
+</head>
+
+<body>
+
+    <div id="page-loader">
+
+    <div class="loader-content">
+
+        <div class="loader-percentage" id="loaderPercentage">
+            0%
+        </div>
+
+        <div class="loader-progress">
+            <div
+                class="loader-progress-bar"
+                id="loaderProgressBar"
+            ></div>
+        </div>
+
+        <p id="loaderText">
+            Loading memories...
+        </p>
+
+    </div>
+
+</div>
+
+    <!-- =========================================
+         HEADER
+    ========================================== -->
+
+    <header class="header" id="site-header">
+
+        <div class="header-inner">
+
+            <!-- Logo -->
+            <a href="#" class="logo">
+                Izzy
+            </a>
+
+
+            <!-- Mobile menu -->
+            <input
+                type="checkbox"
+                id="menu-toggle"
+                class="menu-toggle"
+            >
+
+            <label
+                for="menu-toggle"
+                class="menu-button"
+                aria-label="Open menu"
+            >
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+
+
+            <!-- Navigation -->
+            <nav class="navigation">
+
+                <a href="index.html" class="active">Home</a>
+                <a href="#about">Pages</a>
+                <a href="#albums">Albums</a>
+                <a href="#galleries">Galleries</a>
+                <a href="#blog">Blog</a>
+                <a href="#contact">Contact</a>
+                <a href="#">Buy Now</a>
+
+            </nav>
+
+
+            <!-- Social icons -->
+            <div class="social-links">
+
+                <a href="#" aria-label="Facebook">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M14 8h3V4h-3c-3.3 0-5 1.7-5 5v3H6v4h3v8h4v-8h3.3l.7-4H13V9c0-.7.3-1 1-1z"/>
+                    </svg>
+                </a>
+
+                <a href="#" aria-label="X">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M18.2 3H21l-6.1 7 7.2 11h-5.6l-4.4-6.7L6.3 21H3.5l6.5-7.4L3 3h5.7l4 6.1L18.2 3zm-1 16h1.5L7.1 4.9H5.5L17.2 19z"/>
+                    </svg>
+                </a>
+
+                <a href="#" aria-label="Instagram">
+                    <svg viewBox="0 0 24 24">
+                        <rect
+                            x="3"
+                            y="3"
+                            width="18"
+                            height="18"
+                            rx="5"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                        />
+                        <circle
+                            cx="12"
+                            cy="12"
+                            r="4"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                        />
+                        <circle
+                            cx="17.5"
+                            cy="6.5"
+                            r="1"
+                            fill="currentColor"
+                        />
+                    </svg>
+                </a>
+
+                <a href="#" aria-label="Email">
+                    <svg viewBox="0 0 24 24">
+                        <rect
+                            x="3"
+                            y="5"
+                            width="18"
+                            height="14"
+                            rx="1"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="1.8"
+                        />
+                        <path
+                            d="M4 7l8 6 8-6"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="1.8"
+                        />
+                    </svg>
+                </a>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- =========================================
+         couplepg
+    ========================================== -->
+<div class="site-background"></div>
+    <main>
+
+        <section class="couplepg">
+
+            <div class="couplepg-overlay"></div>
+
+
+            <!-- couplepg content -->
+            <div class="couplepg-content">
+
+                <h1>couple Shots</h1>
+
+                <p>
+                    Because im pretty sure you want to see more of me, right?
+                </p>
+
+                <a href="#about" class="couplepg-button">
+                    Find More
+                </a>
+
+            </div>
+
+
+            <!-- Slider arrows -->
+            <a
+                href="#"
+                class="slider-arrow slider-prev"
+                aria-label="Previous slide"
+            >
+                <span></span>
+            </a>
+
+            <a
+                href="#"
+                class="slider-arrow slider-next"
+                aria-label="Next slide"
+            >
+                <span></span>
+            </a>
+
+        </section>
+
+        <section class="couple-gallery-section" id="couple-gallery">
+
+    <div class="couple-gallery-intro">
+        <span>couple SHOT</span>
+
+        <h2>Portraits &amp; Moments</h2>
+
+        <p>
+            A collection of quiet moments, expressions and memories.
+        </p>
+    </div>
+
+    <!-- Photos will be inserted by JavaScript -->
+    <div class="couple-gallery" id="coupleGallery"></div>
+
+</section>
+
+
+
+        <!-- Additional sections can be added later -->
+
+        <section id="galleries" class="dummy-section">
+        </section>
+
+        <section id="blog" class="dummy-section">
+        </section>
+
+        <section id="contact" class="dummy-section">
+        </section>
+
+    </main>
+
+
+    <!-- =========================================
+         JAVASCRIPT
+    ========================================== -->
+
+    <script>
+
+        const header = document.getElementById("site-header");
+
+        function updateHeader() {
+
+            if (window.scrollY > 80) {
+                header.classList.add("scrolled");
+            } else {
+                header.classList.remove("scrolled");
+            }
+
+        }
+
+        window.addEventListener("scroll", updateHeader);
+
+        updateHeader();
+
+    </script>
+    <script src="/assets/js/couple.js"></script>
+
+</body>
+</html>
